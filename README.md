@@ -3,7 +3,23 @@
 A real-time weather and AQI dashboard for Pakistan's 11 major cities.
 
 🔗 **Live:** https://pakistan-weather-aqi.vercel.app
-📸 **Screenshot:** _[embed a hero shot here]_
+
+![Pakistan Weather & Air Quality dashboard: live temperature and US AQI for 11 cities](docs/screenshots/home.png)
+
+## Screenshots
+
+**City detail:** current conditions, pollutant breakdown, hourly and
+7-day forecast, and the 24-hour AQI trend.
+
+![Lahore detail page](docs/screenshots/city-lahore.png)
+
+**Mobile**
+
+<p>
+  <img src="docs/screenshots/mobile-home.png" alt="Home page on mobile" width="300">
+  &nbsp;
+  <img src="docs/screenshots/mobile-city.png" alt="Lahore detail page on mobile" width="300">
+</p>
 
 ## Why
 
