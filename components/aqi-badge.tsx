@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 interface AqiBadgeProps {
   aqi: number | null;
-  /** Show the short category name ("Sensitive") instead of the full one. */
+  /** Show the short category name ("USG") instead of the full one; the colour carries severity. */
   compact?: boolean;
   className?: string;
 }
@@ -20,7 +20,14 @@ export function AqiBadge({ aqi, compact, className }: AqiBadgeProps) {
       <span className="opacity-60" aria-hidden>
         ·
       </span>
-      <span>{compact ? cat.short : cat.label}</span>
+      {compact && cat.short !== cat.label ? (
+        <>
+          <span aria-hidden>{cat.short}</span>
+          <span className="sr-only">{cat.label}</span>
+        </>
+      ) : (
+        <span>{cat.label}</span>
+      )}
     </Badge>
   );
 }

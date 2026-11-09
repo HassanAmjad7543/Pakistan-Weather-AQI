@@ -19,7 +19,7 @@ export function getAqiCategory(aqi: number): AqiCategory {
   if (aqi <= 100)
     return { label: "Moderate", short: "Moderate", bg: "bg-yellow-500", fg: "text-yellow-950", text: "text-yellow-600 dark:text-yellow-400", hex: "#eab308", description: "Acceptable for most people." };
   if (aqi <= 150)
-    return { label: "Unhealthy for Sensitive Groups", short: "Sensitive", bg: "bg-orange-500", fg: "text-orange-950", text: "text-orange-600 dark:text-orange-400", hex: "#f97316", description: "Sensitive groups may experience effects." };
+    return { label: "Unhealthy for Sensitive Groups", short: "USG", bg: "bg-orange-500", fg: "text-orange-950", text: "text-orange-600 dark:text-orange-400", hex: "#f97316", description: "Sensitive groups may experience effects." };
   if (aqi <= 200)
     return { label: "Unhealthy", short: "Unhealthy", bg: "bg-red-500", fg: "text-white", text: "text-red-600 dark:text-red-400", hex: "#ef4444", description: "Everyone may begin to experience effects." };
   if (aqi <= 300)

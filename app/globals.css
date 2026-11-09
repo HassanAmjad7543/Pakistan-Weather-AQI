@@ -96,3 +96,12 @@
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
+
+/* AQI panel: a category-coloured edge on the normal card surface. Dark mode gets
+   a faint tint of the category so it reads as status without becoming a bright block. */
+.aqi-panel {
+  border-color: color-mix(in oklab, var(--aqi) 35%, var(--border));
+}
+.dark .aqi-panel {
+  background: color-mix(in oklab, var(--aqi) 5%, #111113);
+}

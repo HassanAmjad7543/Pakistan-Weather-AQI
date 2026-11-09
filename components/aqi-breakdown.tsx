@@ -16,15 +16,10 @@ export function AqiBreakdown({ current }: { current: AirQualityCurrent }) {
   return (
     <Section title="Air quality" aside="US AQI · µg/m³">
       <div
-        className="relative overflow-hidden rounded-2xl border border-border bg-card p-6 sm:p-8"
+        className={cn("relative overflow-hidden rounded-2xl border border-border bg-card p-6 sm:p-8", cat && "aqi-panel")}
         style={cat ? ({ "--aqi": cat.hex } as React.CSSProperties) : undefined}
       >
-        {cat && (
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,var(--aqi),transparent_65%)] opacity-[0.14]"
-          />
-        )}
+        {cat && <div aria-hidden className="absolute inset-y-0 left-0 w-1 bg-[var(--aqi)]" />}
         <div className="relative flex flex-col gap-8">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:gap-6">
             <p className={cn("font-mono text-7xl font-medium leading-none tracking-tighter", cat?.text)}>
@@ -53,7 +48,7 @@ export function AqiBreakdown({ current }: { current: AirQualityCurrent }) {
             {POLLUTANTS.map((p) => {
               const value = current[p.key];
               return (
-                <div key={p.key} className="flex flex-col gap-1 bg-background/90 p-3 sm:p-4" title={p.name}>
+                <div key={p.key} className="flex flex-col gap-1 bg-card p-3 sm:p-4" title={p.name}>
                   <dt className="text-xs font-medium text-muted-foreground">{p.label}</dt>
                   <dd className="font-mono text-lg sm:text-xl">{value != null ? Math.round(value) : "—"}</dd>
                 </div>

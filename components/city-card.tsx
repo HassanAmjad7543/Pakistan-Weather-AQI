@@ -24,16 +24,16 @@ export function CityCard({ city, data }: CityCardProps) {
     <Link
       href={`/city/${city.slug}`}
       style={{ "--glow": `${glow}66` } as React.CSSProperties}
-      className="group relative flex flex-col gap-6 rounded-2xl border border-border bg-card p-5 shadow-sm transition-all duration-150 ease-out hover:-translate-y-0.5 hover:scale-[1.02] hover:border-[var(--glow)] hover:shadow-[0_12px_40px_-16px_var(--glow)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:p-6 dark:shadow-none"
+      className="group relative flex flex-col gap-5 rounded-2xl border border-border bg-card p-5 shadow-sm transition-all duration-150 ease-out hover:-translate-y-0.5 hover:scale-[1.02] hover:border-[var(--glow)] hover:shadow-[0_12px_40px_-16px_var(--glow)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:p-6 dark:shadow-none"
     >
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0">
           <h2 className="truncate text-lg font-semibold tracking-tight">{city.name}</h2>
-          <p className="text-sm text-muted-foreground">{city.province}</p>
+          <p className="text-sm text-foreground/75">{city.province}</p>
         </div>
         {Icon && (
           <div className="flex flex-col items-end gap-1 text-muted-foreground">
-            <Icon className="size-7 text-foreground/80" strokeWidth={1.5} aria-hidden />
+            <Icon className="size-10 text-foreground/85" strokeWidth={1.4} aria-hidden />
             <span className="text-xs">{conditions.label}</span>
           </div>
         )}

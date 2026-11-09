@@ -10,6 +10,7 @@ import { SiteHeader } from "@/components/site-header";
 import { getAqiCategory } from "@/lib/aqi";
 import { CITIES, getCity, isCitySlug, type CitySlug } from "@/lib/cities";
 import { getCityData } from "@/lib/data";
+import { SITE } from "@/lib/site";
 
 export const revalidate = 300;
 // Unknown slugs are rejected by isCitySlug() below. (Not `dynamicParams = false`:
@@ -31,10 +32,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     data && aqi != null
       ? `${Math.round(data.weather.temperature_2m)}°C and US AQI ${Math.round(aqi)} (${getAqiCategory(aqi).label}) in ${city.name} right now.`
       : `Live weather and air quality for ${city.name}, ${city.province}.`;
+  const title = `${city.name} weather & AQI`;
+  const description = `${summary} Hourly and 7-day forecast, pollutant breakdown and 24-hour AQI trend.`;
   return {
-    title: `${city.name} weather & AQI`,
-    description: `${summary} Hourly and 7-day forecast, pollutant breakdown and 24-hour AQI trend.`,
+    title,
+    description,
     alternates: { canonical: `/city/${slug}` },
+    openGraph: { type: "website", siteName: SITE.name, locale: "en_PK", url: `/city/${slug}`, title, description },
+    twitter: { card: "summary_large_image", title, description },
   };
 }
 

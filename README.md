@@ -29,7 +29,7 @@ Open-Meteo (data source)
 
 ## Architecture
 
-A scheduled job hits `/api/refresh` every 30 minutes. That route fetches
+A scheduled job hits `/api/refresh` every 15 minutes. That route fetches
 weather and AQI from Open-Meteo for every city (two batched requests),
 upserts the results into a single Supabase table, and revalidates the
 affected pages on demand. Pages read from Supabase using React Server
@@ -73,13 +73,13 @@ to use Postgres instead.
    `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` and
    `CRON_SECRET` to the project's environment variables.
 3. **Cron:** Vercel's Hobby plan only allows daily cron jobs, so use
-   [cron-job.org](https://cron-job.org) (free) for the 30-minute schedule:
+   [cron-job.org](https://cron-job.org) (free) for the 15-minute schedule:
    - URL: `https://pakistan-weather-aqi.vercel.app/api/refresh`
-   - Schedule: every 30 minutes
+   - Schedule: every 15 minutes
    - Header: `Authorization: Bearer <CRON_SECRET>`
 
    On Vercel Pro you can instead add a `vercel.json` with
-   `{"crons":[{"path":"/api/refresh","schedule":"*/30 * * * *"}]}`. Vercel
+   `{"crons":[{"path":"/api/refresh","schedule":"*/15 * * * *"}]}`. Vercel
    sends the `CRON_SECRET` bearer header automatically.
 4. Trigger the first refresh by hand (curl above, against the live URL).
 

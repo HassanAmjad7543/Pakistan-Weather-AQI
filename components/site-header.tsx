@@ -22,7 +22,7 @@ export function SiteHeader({ city }: SiteHeaderProps) {
               <ArrowLeft className="size-4" />
               <span className="hidden sm:inline">All cities</span>
             </Link>
-            <div className="mx-auto truncate text-sm font-medium">
+            <div className="mr-auto min-w-0 truncate text-sm font-medium sm:mx-auto">
               {city.name}
               <span className="text-muted-foreground">, {city.province}</span>
             </div>
