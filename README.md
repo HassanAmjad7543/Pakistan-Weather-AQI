@@ -2,7 +2,7 @@
 
 A real-time weather and AQI dashboard for Pakistan's 11 major cities.
 
-🔗 **Live:** https://your-url.vercel.app
+🔗 **Live:** https://pakistan-weather-aqi.vercel.app
 📸 **Screenshot:** _[embed a hero shot here]_
 
 ## Why
@@ -74,7 +74,7 @@ to use Postgres instead.
    `CRON_SECRET` to the project's environment variables.
 3. **Cron:** Vercel's Hobby plan only allows daily cron jobs, so use
    [cron-job.org](https://cron-job.org) (free) for the 30-minute schedule:
-   - URL: `https://your-url.vercel.app/api/refresh`
+   - URL: `https://pakistan-weather-aqi.vercel.app/api/refresh`
    - Schedule: every 30 minutes
    - Header: `Authorization: Bearer <CRON_SECRET>`
 
