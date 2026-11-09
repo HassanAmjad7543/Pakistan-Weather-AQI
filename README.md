@@ -34,6 +34,7 @@ people avoid checking.
 - 7-day weather forecast and 24-hour AQI trend charts
 - Pollutant breakdown (PM2.5, PM10, NO₂, SO₂, O₃, CO)
 - Hourly forecast strip for the next 24 hours
+- Live updates: open pages pick up new data without a reload
 - Dark and light mode
 - Fully responsive, mobile-first
 
@@ -53,6 +54,11 @@ Components with ISR (`revalidate = 300`), so users never wait on the
 upstream API and the site stays well under Open-Meteo's fair-use
 guidelines. If Open-Meteo is down, nothing is overwritten and the site
 keeps serving the last good data.
+
+Open pages update live. After each refresh the route broadcasts on a
+Supabase Realtime channel, and every open tab re-renders its server
+components in place (`router.refresh()`), so new readings appear without
+a reload and scroll position and search text are kept.
 
 ```
 cron ──► /api/refresh ──► Open-Meteo (weather + air quality)

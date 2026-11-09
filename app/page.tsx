@@ -1,6 +1,7 @@
 import { AqiLegend } from "@/components/aqi-legend";
 import { CityGrid } from "@/components/city-grid";
 import { EmptyState } from "@/components/empty-state";
+import { LiveUpdates } from "@/components/live-updates";
 import { SiteHeader } from "@/components/site-header";
 import { UpdatedAt } from "@/components/updated-at";
 import { getAllCityData, latestUpdate } from "@/lib/data";
@@ -33,6 +34,7 @@ export default async function HomePage() {
 
         <AqiLegend />
       </main>
+      {updatedAt && <LiveUpdates updatedAt={updatedAt} />}
     </>
   );
 }

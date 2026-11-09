@@ -6,6 +6,7 @@ import { CurrentWeather } from "@/components/current-weather";
 import { EmptyState } from "@/components/empty-state";
 import { ForecastChart } from "@/components/forecast-chart";
 import { HourlyForecast } from "@/components/hourly-forecast";
+import { LiveUpdates } from "@/components/live-updates";
 import { SiteHeader } from "@/components/site-header";
 import { getAqiCategory } from "@/lib/aqi";
 import { CITIES, getCity, isCitySlug, type CitySlug } from "@/lib/cities";
@@ -69,6 +70,7 @@ export default async function CityPage({ params }: Props) {
           </EmptyState>
         )}
       </main>
+      {data && <LiveUpdates updatedAt={data.updated_at} />}
     </>
   );
 }

@@ -2,6 +2,7 @@ import { revalidatePath } from "next/cache";
 import { NextResponse, type NextRequest } from "next/server";
 import { saveCityData } from "@/lib/data";
 import { fetchAllCityData } from "@/lib/fetchers";
+import { broadcastRefresh } from "@/lib/realtime";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 30;
@@ -29,10 +30,15 @@ async function handler(request: NextRequest) {
     revalidatePath("/");
     for (const row of rows) revalidatePath(`/city/${row.slug}`);
 
+    // Then tell open browsers to pull the new snapshot (no reload needed).
+    const updatedAt = rows[0]?.updated_at;
+    const broadcast = updatedAt ? await broadcastRefresh(updatedAt) : false;
+
     return NextResponse.json({
       ok: true,
       cities: rows.length,
-      updated_at: rows[0]?.updated_at,
+      updated_at: updatedAt,
+      broadcast,
       duration_ms: Date.now() - started,
     });
   } catch (error) {

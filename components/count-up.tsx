@@ -9,10 +9,14 @@ interface CountUpProps {
   className?: string;
 }
 
-/** Counts from 0 to `value` in 300ms. Server HTML already contains the final value. */
+/**
+ * Counts up to `value` in 300ms: from 0 on first render, then from the previous
+ * value when live data arrives. Server HTML already contains the final value.
+ */
 export function CountUp({ value, decimals = 0, className }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const reduce = useReducedMotion();
+  const from = useRef(0);
   const format = (v: number) => {
     const s = v.toFixed(decimals);
     return s === "-0" ? "0" : s;
@@ -21,11 +25,13 @@ export function CountUp({ value, decimals = 0, className }: CountUpProps) {
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
-    if (reduce) {
+    const start = from.current;
+    from.current = value;
+    if (reduce || start === value) {
       node.textContent = format(value);
       return;
     }
-    const controls = animate(0, value, {
+    const controls = animate(start, value, {
       duration: 0.3,
       ease: "easeOut",
       onUpdate: (v) => {
