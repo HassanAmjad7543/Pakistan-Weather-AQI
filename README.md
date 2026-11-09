@@ -47,8 +47,8 @@ cron ──► /api/refresh ──► Open-Meteo (weather + air quality)
 ## Run locally
 
 ```bash
-git clone https://github.com/your-username/pak-weather-dashboard.git
-cd pak-weather-dashboard
+git clone https://github.com/HassanAmjad7543/pakistan-weather-aqi.git
+cd pakistan-weather-aqi
 pnpm install
 cp .env.example .env.local   # set CRON_SECRET at minimum
 pnpm dev

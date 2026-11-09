@@ -4,8 +4,7 @@ export const SITE = {
   description:
     "Live weather and air quality (US AQI) for Pakistan's eleven largest cities — current conditions, hourly and 7-day forecasts, pollutant breakdown and 24-hour AQI trend.",
   author: "Hassan Amjad",
-  // TODO: point these at your real profiles before launch.
-  github: "https://github.com/your-username/pak-weather-dashboard",
+  github: "https://github.com/HassanAmjad7543/pakistan-weather-aqi",
   url:
     process.env.NEXT_PUBLIC_SITE_URL ??
     (process.env.VERCEL_PROJECT_PRODUCTION_URL
