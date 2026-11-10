@@ -17,7 +17,7 @@ export function CityGrid({ rows }: { rows: CityDataRow[] }) {
     : CITIES;
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-6">
       <SearchBar value={query} onChange={setQuery} />
 
       {cities.length === 0 ? (
