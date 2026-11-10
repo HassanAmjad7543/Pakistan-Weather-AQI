@@ -10,7 +10,6 @@ import {
   CloudSnow,
   CloudSun,
   CloudSunRain,
-  Haze,
   Moon,
   Snowflake,
   Sun,
@@ -81,7 +80,7 @@ export function getWeatherInfo(code: number, isDay = true): WeatherInfo {
  * clear-to-cloudy, describe it as hazy — that's what people actually see.
  */
 export function getConditions(code: number, isDay: boolean, pm25?: number | null): WeatherInfo {
-  if (pm25 != null && pm25 >= 75 && code <= 3) return { label: "Hazy", icon: Haze };
+  if (pm25 != null && pm25 >= 75 && code <= 3) return { label: "Hazy", icon: CloudFog };
   return getWeatherInfo(code, isDay);
 }
 
